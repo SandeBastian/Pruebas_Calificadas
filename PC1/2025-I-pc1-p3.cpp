@@ -18,5 +18,39 @@ Ejemplo 2: 42 y 64 no se atacan
 6  61 62 63 64 65 66 67 68
 7  71 72 73 74 75 76 77 78
 8  81 82 83 84 85 86 87 88
+
+Nota: Resolver sin emplear arreglos, ni cadenas, ni funciones.
 */
+#include <iostream>
+using namespace std;
+
+int main() {
+   int pos1, pos2;
+   cout << "Ingrese la posicion del primer caballo (2 cifras): ";
+   cin >> pos1;
+   cout << "Ingrese la posicion del segundo caballo (2 cifras): ";
+   cin >> pos2;
+
+   // separar fila y columna
+   int f1 = pos1 / 10;
+   int c1 = pos1 % 10;
+   int f2 = pos2 / 10;
+   int c2 = pos2 % 10;
+
+   // calcular diferencia sin abs()
+   int df, dc;
+   if (f1 > f2) df = f1 - f2;
+   else df = f2 - f1;
+
+   if (c1 > c2) dc = c1 - c2;
+   else dc = c2 - c1;
+
+   // verificar movimiento en L
+   if ( (df == 2 && dc == 1) || (df == 1 && dc == 2) )
+      cout << "Los caballos se atacan." << endl;
+   else
+      cout << "Los caballos NO se atacan." << endl;
+
+   return 0;
+}
 
