@@ -1,75 +1,65 @@
+/*
+PRIMERA PRACTICA CALIFICADA 2024-II
+Pregunta 3 (de 9:10 a 9:43 am) 5 puntos
+Se ha tomado un examen sustitutorio de algoritmos a n estudiantes, donde n menor a 8 y por cada estudiante se tiene su código
+(número de 4 cifras) y la nota que obtuvo'. Se pide escribir un programa que reciba el código y la nota de cada estudiante y
+determine el valor de una variable "control" que se obtiene eliminando del código los dígitos que corresponden a la nota.
+Finalmente muestre un número formado por la secuencia de la cantidad de dígitos de cada valor de "control".
+Ejemplo, si los valores ingresados son:
+
+    Código      Nota        Control
+    4123        12          43
+    2145        4           215
+    5189        14          589
+    6120        6           120
+    3512        15          32
+
+El número formado por la secuencia de la cantidad de dígitos de los valores de la variable control es 23332
+Nota: No se puede emplear arreglos, cadenas, ni funciones.
+*/
 #include <iostream>
 using namespace std;
-
-int main(){
-    int n;
-
-    do{
-        cout << "Ingresar la cantidad de estudiantes:\n";
-        cout << "(Numero entero mayor a 0 y menor a 8)\n";
-        cin >> n;
-    } while (n >= 8 || n <= 0);
-
-    int ans = 0; // respuesta final
-
-    for (int i=1; i<=n; i++){
-        int code;
-        do{
-            cout << "\nIngresar el codigo del estudiante " << i << ":\n";
-            cout << "(Numero entero positivo de 4 cifras)\n";
-            cin >> code;
-        } while (code < 1000 || code > 9999);
-
-        int nota;
-        do{
-            cout << "Ingresar la nota del estudiante " << i << ":\n";
-            cout << "(Numero entero entre 0 y 20 inclusive)\n";
-            cin >> nota;
-        } while (nota < 0 || nota > 20);
-
-        int control = 0;
-        int new_code = 0;
-
-        while (nota > 0){ // esto se ejcuta 1 o 2 veces (depende de la nota)
-            int d = nota%10; // se debe eliminar d del code
-            int pot10 = 1; // como el anterior problema
-            // asumimos que si hay 0 a la izquierda se eliminan
-            // si no quedan digitos, supongo que se mostrara un mensaje correspondiente
-            // cantidad de digitos = 0 para este caso
-            while (code > 0){
-                int _d = code%10;
-                if (_d != d){
-                    new_code += _d * pot10;
-                    pot10 *= 10;
+int main () {
+    int n, cod, nota, control=0, cont=0, aux1, aux2, r1, r2, fact, newNum=0;
+    do {
+        cout<<"Ingrese la cantidad de estudiantes (entre 0 y 8): ";
+        cin>>n;
+        if (n<0||n>8) cout<<"Error. Numero invalido"<<endl;
+    }while (n<0||n>8);
+    for (int i=0; i<n; i++) {
+        do {
+            cout<<"Ingrese el Codigo ["<<i+1<<"] (de 4 cifras): ";
+            cin>>cod;
+            if (cod<1000||cod>9999) cout<<"Error. Codigo invalido"<<endl;
+        }while (cod<1000||cod>9999);
+        do {
+            cout<<"Ingrese la Nota ["<<i+1<<"] (entre 0 a 20): ";
+            cin>>nota;
+            if (nota<0||nota>20) cout<<"Error. Nota invalida"<<endl;
+        }while (nota<0||nota>20);
+        aux1=cod;
+        aux2=nota;
+        bool flag=true;
+        while (flag) {
+            r1=aux1%10;
+            fact=1;
+            control=0;
+            cont=0;
+            while (aux2>0) {
+                r2=aux2%10;
+                aux2=aux2/10;
+                if (r1!=r2) {
+                    aux1=r1*fact+aux1;
+                    fact=fact*10;
+                    cont++;
                 }
-                code /= 10;
+                if (aux2==0) flag=false;
             }
-            code = new_code;
-            new_code = 0;
-            nota /= 10;
         }
-
-        control = code;
-
-        if (control > 0)
-            cout << "Estudiante " << i << "\t\t\t Control : " << control << "\n";
-        else{
-            cout << "Estudiante " << i << "\t\t\t Control :\n";
-            cout << "Se han eliminado todos los digitos\n";
-        }
-
-        int cnt = 0;
-        while (control > 0){
-            cnt++;
-            control /= 10;
-        }
-
-        ans = ans * 10 + cnt;
+        newNum=newNum*10+cont;
+        cout<<"Codigo"<<"\t\t\t"<<"Nota"<<"\t\t\t"<<"Control"<<endl;
+        cout<<cod<<"\t\t\t"<<nota<<"\t\t\t"<<aux1<<endl;
     }
-
-    cout << "\nEl numero formado por la secuencia de la cantidad de digitos\n";
-    cout << "de los valores de la variable control es: " << ans << "\n";
-
-
+    cout<<"El numero formado por la concatenacion de la cantidad de digitos del control: "<<newNum<<endl;
     return 0;
 }
