@@ -20,7 +20,7 @@ Nota: No se puede emplear arreglos, cadenas, ni funciones.
 #include <iostream>
 using namespace std;
 int main () {
-    int n, cod, nota, r1, r2, control=0, cont=0, sec=0;
+    int n, cod, nota, r1, r2, control=0, cont=0, cantDig=0;
     do {
         cout<<"Ingresar la cantidad de estudiantes (entre 0 y 8): ";
         cin>>n;
@@ -39,29 +39,67 @@ int main () {
         cont=0;
         int aux1=cod;
         int aux2=nota;
-
-        while (nota>0) {
+        int fact=1;
+        while (aux2>0) {
             r2=aux2%10;
-            int fact=1;
+            aux2=aux2/10;
+            fact=1;
+            control=0;
+            cont=0; //Reinicio y el while 2 debe demostrar que no es 0 y que hay mas cifras en cada iteracion
+
             while (aux1>0) {
                 r1=aux1%10;
                 if (r1!=r2) {
-                    aux1=aux1/10;
                     control=r1*fact+control;
                     fact=fact*10;
                     cont++;
                 }
-                else {
-                    aux1=aux1/10;
-                }
+                aux1=aux1/10;
             }
-            aux2=aux2/10;
+
+            aux1=control; //Para que aux1 se actualize para el while 1
         }
-        sec=cont*10+cont;
-        cout<<"Codigo"<<"\t\t"<<"Nota"<<"\t\t"<<"Control"<<endl;
-        cout<<cod<<"\t\t"<<nota<<"\t\t"<<(control==0 ? "--" : control )<<endl;
+
+        /*while (aux1>0) {   //en caso de no querer pelear con los contadores dentro del while
+            aux1=aux1/10;
+            cont++;
+        }
+        */
+
+        cantDig=cantDig*10+cont;
+        cout<<"Codigo"<<"\t\t\t"<<"Nota"<<"\t\t\t"<<"Control"<<endl;
+        cout<<cod<<"\t\t\t"<<nota<<"\t\t\t";
+        if (control==0) cout<<"--"<<endl;
+        else cout<<control<<endl;
     }
-    cout<<"El número formado por la secuencia de la cantidad de dígitos"<<endl;
-    cout<<"de los valores de la variable control es: "<<sec<<endl;
+    cout<<"El numero formado por la secuencia de la cantidad de digitos"<<endl;
+    cout<<"de los valores de la variable control es: "<<cantDig<<endl;
     return 0;
 }
+
+
+//de linea 38 a 59
+/*
+        control=0;
+        cont=0;
+        int aux1=cod;
+        int aux2=nota;
+        int fact=1;
+        while (aux2>0) {
+            r2=aux2%10;
+            aux2=aux2/10;
+            fact=1;
+            control=0;
+            cont=0;
+            while (aux1>0) {
+                r1=aux1%10;
+                if (r1!=r2) {
+                    control=r1*fact+control;
+                    fact=fact*10;
+                    cont++;
+                }
+                aux1=aux1/10;
+            }
+            aux1=control;
+        }
+*/
