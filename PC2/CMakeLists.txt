@@ -7,5 +7,7 @@ add_executable(PC2 main.cpp)
 add_executable(2024-II-pc2-p1 2024-II/2024-II-pc2-p1.cpp)
 add_executable(2024-II-pc2-p2 2024-II/2024-II-pc2-p2.cpp)
 add_executable(2024-II-pc2-p3 2024-II/2024-II-pc2-p3.cpp)
+add_executable(sparring1 2024-II/sparring1.cpp)
+add_executable(sparring2 2024-II/sparring2.cpp)
 
 
