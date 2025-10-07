@@ -18,4 +18,6 @@ add_executable(sparring3 sparring3.cpp)
 add_executable(sparring4 sparring4.cpp)
 add_executable(sparring5 sparring5.cpp)
 
-
+add_executable(p1 mogollon-sebastian-pc2-p1.cpp)
+add_executable(p2 mogollon-sebastian-pc2-p2.cpp)
+add_executable(p3 mogollon-sebastian-pc2-p3.cpp)
