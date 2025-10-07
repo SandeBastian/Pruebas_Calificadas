@@ -32,7 +32,7 @@ int main () {
             cin>>num;
             if (num<10||num>9999) cout<<"Error. Numero Invalido"<<endl;
         }while (num<10||num>9999);
-
+        //*******************
         bool flag=true;
         j=1;
         while (j<num&&flag) {
@@ -41,6 +41,7 @@ int main () {
             }
             j++;
         }
+        //*******************
         if (flag) {
             if (num<minPri) {
                 minPri=num;

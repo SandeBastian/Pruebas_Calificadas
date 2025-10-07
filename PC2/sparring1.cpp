@@ -24,7 +24,7 @@ int main () {
     int code[10]={100, 200, 100, 300, 100, 500, 300, 100, 400, 400};
     //float precio[10]={25.3, 15.6, 30.7, 16.3, 28.4, 20.5, 15.2, 20.5, 15.2, 20.8};
     float precio[10]={100, 200, 100, 300, 100, 500, 300, 100, 400, 400};
-
+    //Solo imrpime y suma precios basico para ver como funciona
     for (int i=0; i<n; i++) {
         for (int j=0; j<n; j++) {
             if (code[i] > code [j]) {

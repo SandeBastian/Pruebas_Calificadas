@@ -20,36 +20,11 @@ productos que hayan tenido rebajas (“# de rebajas” > 0) y debe  estar ordena
 #include <iostream>
 using namespace std;
 int main () {
-    int n;
-    do {
-        cout<<"Ingrese el numero de productos:";
-        cin>>n;
-        if (n<0||n>200) cout<<"Error. Numero no Valido"<<endl;
-    }while (n<0||n>200);
-
-    int code[n];
-    float precio[n];
-    for (int i=0; i<n; i++) {
-        do {
-            cout<<"Ingrese el Codido ["<<i+1<<"]: ";
-            cin>>code[i];
-            if (code[i]<100||code[i]>999) cout<<"Error. Codigo no Valido"<<endl;
-        }while (code[i]<100||code[i]>999);
-        do {
-            cout<<"Ingrese el Precio ["<<i+1<<"]: ";
-            cin>>precio[i];
-            if (precio[i]<0) cout<<"Error. Precio no Valido"<<endl;
-        }while (precio[i]<0);
-    }
-    code[10]={100, 200, 100, 300, 100, 500};
-
-    for (int i=0; i<n; i++) {
-        for (int j=0; j<n; j++) {
-            if (code[i] > code [j]) {
-
-            }
-        }
-    }
+    int n=10;
+    int code[10]={100, 200, 100, 300, 100, 500, 300, 100, 400, 400};
+    //float precio[10]={25.3, 15.6, 30.7, 16.3, 28.4, 20.5, 15.2, 20.5, 15.2, 20.8};
+    float precio[10]={25.3, 15.6, 30.7, 16.3, 28.4, 20.5, 15.2, 20.5, 15.2, 20.8};
+    //Esto fue la prueba final del codigo, pero falta hacer el ingreso de numeros
     int aux_code;
     float aux_precio;
     for (int i=0; i<n-1; i++) {
@@ -66,28 +41,30 @@ int main () {
         }
     }
     cout<<"Codigo\t\tSuma\t\tPromedio de Rebajas"<<endl;
-    for (int i=0; i<n; i++) {
-        cout<<code[i]<<"\t\t"<<precio[i]<<endl;
-    }
-    cout<<"\nPrecio\t\tPromedio\t\t# de Rebajas"<<endl;
+    //Eliminacion y suma de precios... tambien promedio
     for (int i=0; i<n-1; i++) {
-        for (int j=i+1; j<n; j++) {
-            if (code[i]==code[j]) {
-                precio[i]=precio[i]+precio[j];
-                int k=j;
-                while (k<n-1) {
-                    code[k]=code[k+1];
-                    precio[k]=precio[k+1];
-                    k++;
-                }
-                n--;
+        int j=i;
+        while (j+1<n && code[i]==code[j+1]) {
+            j++;
+        }
+        float prom=0;
+        //Acumula promedio
+        for (int k=i; k<=j; k++) {
+            prom=prom+precio[k];
+        }
+        //Crea variables
+        prom=prom/(j-i+1);
+        int cnt = 0;
+        //Calcula cantidad de productos con el mismo codigo
+        for (int k=i; k<=j; k++) {
+            if (precio[k] < prom) {
+                cnt++;
             }
         }
+        if (cnt > 0){
+            cout << code[i] << "\t\t" << prom << "\t\t" << cnt << "\n";
+        }
+        i = j;
     }
-    cout<<"Codigo\t\tSuma\t\tPromedio de Rebajas"<<endl;
-    for (int i=0; i<n; i++) {
-        cout<<code[i]<<"\t\t"<<precio[i]<<endl;
-    }
-
     return 0;
 }
