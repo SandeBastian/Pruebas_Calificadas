@@ -12,6 +12,10 @@ Los dígitos del producto de los números:
 4 5 1 4 5 0 4 0
 Nota: Validar la base b y que los dígitos de los números ingresados se encuentren en el sistema de numeración de base b.
 Resolver sin utilizar funciones.
+
+for (int i=0; i<sz; i++) {
+        cout<<p[i]<<" ";
+    }
 */
 #include <iostream>
 using namespace std;
@@ -51,13 +55,27 @@ int main () {
             if (y[i]<0||y[i]>=b) cout<<"Error. Cifra invalida."<<endl;
         }while (y[i]<0||y[i]>=b);
     }
-    int p[n+m]={0};
-    for (int i=n-1; i>=0; i--) {
+    int sz=n+m;
+    int p[sz]={0};
+
+    for (int i=m-1; i>=0; i--) {
         for (int j=n-1; j>=0; j--) {
             int prod=x[i]*y[j];
             p[j+i+1]=p[j+i+1]+prod;
-            
         }
     }
-
+   for (int i=sz-1; i>=0; i--) {
+       int q=p[i]/b;
+       p[i]=p[i]%b;
+       p[i-1]=p[i-1]+q;
+       //cout<<p[i]<<endl;
+   }
+    int j=0;
+    while (p[j]==0) j++;
+    cout<<"Los digitos del producto de los numeros: "<<endl;
+    while (j<sz) {
+        cout<<p[j]<<" ";
+        j++;
+    }
+    return 0;
 }
