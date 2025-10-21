@@ -2,12 +2,12 @@
 using namespace std;
 int main() {
     int n;
-    //srand(time(NULL));
+    srand(time(NULL));
     do {
         cout<<"Ingrese el orden de la matriz: ";
         cin>>n;
-        if (n<0) cout<<"Error. Valor invalido.";
-    }while (n<0);
+        if (n<=0) cout<<"Error. Valor invalido."<<endl;
+    }while (n<=0);
     int matA[n][n];
     for ( int i=0; i<n; i++) {
         for (int j=0; j<n; j++) {
