@@ -12,6 +12,10 @@ add_executable(2025-I-pc2-p1 2025-I-pc2-p1.cpp)
 add_executable(2025-I-pc2-p2 2025-I-pc2-p2.cpp)
 add_executable(2025-I-pc2-p3 2025-I-pc2-p3.cpp)
 
+add_executable(2025-II-pc2-p1 2025-II-pc2-p1.cpp)
+add_executable(2025-II-pc2-p2 2025-II-pc2-p2.cpp)
+add_executable(2025-II-pc2-p3 2025-II-pc2-p3.cpp)
+
 add_executable(sparring1 sparring1.cpp)
 add_executable(sparring2 sparring2.cpp)
 add_executable(sparring3 sparring3.cpp)
