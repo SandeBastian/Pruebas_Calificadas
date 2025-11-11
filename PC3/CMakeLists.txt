@@ -21,3 +21,9 @@ add_executable(2024.2.P3 2024.2.P3.cpp)
 add_executable(2025.1.P1 2025.1.P1.cpp)
 add_executable(2025.1.P2 2025.1.P2.cpp)
 add_executable(2025.1.P3 2025.1.P3.cpp)
+
+add_executable(p1 sebastian.mogollon.p1.cpp)
+add_executable(p1.1 sebastian.mogollon.f.p1.cpp)
+
+add_executable(p2 sebastian.mogollon.p2.cpp)
+add_executable(p3 sebastian.mogollon.p3.cpp)

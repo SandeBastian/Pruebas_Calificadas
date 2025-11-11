@@ -5,13 +5,13 @@ presentar la información ordenada en forma decreciente respecto al sueldo
 */
 #include <iostream>
 using namespace std;
-struct REgente {
+struct Encuest {
     int cod;
     char sex;
     float sueldo;
 };
 
-void IngresasDatos(int n, REgente empl[]) {
+void IngresasDatos(int n, Encuest empl[]) {
     char sexo;
     for (int i=0; i<n; i++) {
         cout<<"Codigo de Empleado ["<<i+1<<"]: ";
@@ -24,11 +24,11 @@ void IngresasDatos(int n, REgente empl[]) {
     }
 }
 
-void ordenarDatos(int n, REgente empl[]) {
+void ordenarDatos(int n, Encuest empl[]) {
     for (int i=0; i<n-1; i++) {
         for (int j=i+1; j<n; j++) {
             if (empl[i].sueldo<empl[j].sueldo) {
-                REgente temp = empl[i];
+                Encuest temp = empl[i];
                 empl[i] = empl[j];
                 empl[j] = temp;
             }
@@ -36,7 +36,7 @@ void ordenarDatos(int n, REgente empl[]) {
     }
 }
 
-void presentarDatos(int n, REgente empl[]) {
+void presentarDatos(int n, Encuest empl[]) {
     cout<<"\nCodigo\tSexo\tSueldo"<<endl;
     for (int i=0; i<n; i++) {
         cout<<empl[i].cod<<"\t"<<empl[i].sex<<"\t"<<empl[i].sueldo<<endl;
@@ -47,7 +47,7 @@ int main () {
     int n;
     cout<<"Ingrese la cantidad de empleados: ";
     cin>>n;
-    REgente empl[n] ;
+    Encuest empl[n] ;
     IngresasDatos(n, empl);
     ordenarDatos(n, empl);
     presentarDatos(n, empl);
